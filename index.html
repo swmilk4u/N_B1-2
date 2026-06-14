@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>만들기 전에, 한 번 더 — K-AI 콘텐츠 공모전 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0D1B2A;
+      --navy-mid: #112233;
+      --navy-light: #1a2f45;
+      --gold: #D48C00;
+      --gold-light: #F0A800;
+      --gold-pale: #f5c842;
+      --white: #FFFFFF;
+      --gray: #8fa3b1;
+      --gray-light: #c8d8e4;
+      --blue-glow: #3b7dd8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(13, 27, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 140, 0, 0.2);
+    }
+
+    .nav-logo {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 2rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 60%, rgba(59, 125, 216, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 30% 40%, rgba(212, 140, 0, 0.06) 0%, transparent 60%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(212, 140, 0, 0.5);
+      padding: 0.4rem 1.2rem;
+      border-radius: 2rem;
+      margin-bottom: 2rem;
+      animation: fadeInDown 0.8s ease both;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.9s ease 0.1s both;
+    }
+
+    .hero-title .gold { color: var(--gold-light); }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      color: var(--gray-light);
+      letter-spacing: 0.05em;
+      margin-bottom: 3rem;
+      animation: fadeInUp 0.9s ease 0.2s both;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 0.9s ease 0.3s both;
+    }
+
+    .hero-meta-item {
+      text-align: center;
+    }
+
+    .hero-meta-item .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-meta-item .value {
+      font-size: 0.9rem;
+      color: var(--gray-light);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gray);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 3rem;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--gray-light);
+      line-height: 1.8;
+      max-width: 640px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(212, 140, 0, 0.3), transparent);
+      margin: 0;
+    }
+
+    /* ── NARRATIVE ── */
+    .narrative-section {
+      padding: 5rem 2rem;
+      background: var(--navy-mid);
+    }
+
+    .narrative-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .narrative-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .narrative-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212, 140, 0, 0.15);
+      border-radius: 1rem;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .narrative-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212, 140, 0, 0.4);
+    }
+
+    .narrative-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+
+    .narrative-step {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .narrative-korean {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-bottom: 0.8rem;
+    }
+
+    .narrative-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .narrative-card p {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      line-height: 1.7;
+    }
+
+    /* ── CHARACTERS ── */
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .char-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(212, 140, 0, 0.2);
+      border-radius: 1.2rem;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .char-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .char-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── SCENES ── */
+    .scenes-section {
+      padding: 6rem 2rem;
+      background: linear-gradient(to bottom, var(--navy), var(--navy-mid));
+    }
+
+    .scenes-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .timeline-bar {
+      display: flex;
+      gap: 0;
+      margin: 3rem 0 4rem;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      height: 8px;
+    }
+
+    .tl-seg {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0;
+      position: relative;
+    }
+
+    .tl-seg::after {
+      content: attr(data-label);
+      position: absolute;
+      top: 16px;
+      font-size: 0.6rem;
+      color: var(--gray);
+      white-space: nowrap;
+    }
+
+    .scene-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .scene-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .scene-num {
+      text-align: center;
+      padding-top: 0.5rem;
+    }
+
+    .scene-num .n {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(212, 140, 0, 0.15);
+      line-height: 1;
+      display: block;
+    }
+
+    .scene-num .tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .scene-body {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+
+    .scene-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .scene-title { font-size: 1.3rem; font-weight: 700; }
+
+    .scene-duration {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--gold);
+      border: 1px solid rgba(212, 140, 0, 0.4);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      white-space: nowrap;
+    }
+
+    .scene-msg {
+      font-size: 0.9rem;
+      color: var(--gray-light);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .scene-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .scene-images img {
+      width: 100%;
+      border-radius: 0.6rem;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .scene-images img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+
+    .scene-narration {
+      background: rgba(212, 140, 0, 0.07);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 0.5rem 0.5rem 0;
+      padding: 1rem 1.2rem;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--gray-light);
+    }
+
+    .scene-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tool-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2rem;
+      background: rgba(59, 125, 216, 0.15);
+      border: 1px solid rgba(59, 125, 216, 0.3);
+      color: #7ab8ff;
+    }
+
+    /* ── SPECS ── */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .spec-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0.8rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .spec-card .label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .spec-card .value {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    /* ── TOOLS ── */
+    .tools-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+    }
+
+    .tools-table th {
+      text-align: left;
+      padding: 0.8rem 1rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(212, 140, 0, 0.3);
+    }
+
+    .tools-table td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--gray-light);
+      vertical-align: top;
+    }
+
+    .tools-table tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .tools-table td:first-child { font-weight: 700; color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(212, 140, 0, 0.15);
+    }
+
+    .footer-slogan {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 900;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+    }
+
+    .footer-sub {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .footer-meta {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .scene-item { grid-template-columns: 1fr; }
+      .scene-num { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">K-AI 2026</div>
+  <ul class="nav-links">
+    <li><a href="#narrative">서사</a></li>
+    <li><a href="#characters">캐릭터</a></li>
+    <li><a href="#scenes">스토리보드</a></li>
+    <li><a href="#specs">영상 스펙</a></li>
+    <li><a href="#tools">제작 도구</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:100%; padding-top:6rem;">
+  <div class="hero-badge">K-AI 콘텐츠 공모전 2026 · Track A. AI 영상(광고)</div>
+  <h1 class="hero-title">
+    만들기 전에,<br />
+    <span class="gold">한 번 더.</span>
+  </h1>
+  <p class="hero-subtitle">AI로 만들 때도, 창작자를 먼저 생각합니다.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="label">총 길이</span>
+      <span class="value">40초</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="label">해상도</span>
+      <span class="value">1920 × 1080</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="label">주제</span>
+      <span class="value">AI 저작권 · 에티켓</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="label">타겟</span>
+      <span class="value">20–40대 크리에이터</span>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- NARRATIVE -->
+<div class="narrative-section" id="narrative">
+  <div class="narrative-inner">
+    <div class="reveal">
+      <div class="section-label">Campaign Narrative</div>
+      <h2 class="section-title">기승전결 서사 구조</h2>
+      <p class="section-desc">AI 저작권·에티켓 인식 제고를 목표로, 창작자의 손에서 시작해 행동 지침으로 마무리되는 감성 시네마틱 광고.</p>
+    </div>
+    <div class="narrative-grid">
+      <div class="narrative-card reveal">
+        <div class="narrative-step">ACT 1 · 기 (起)</div>
+        <div class="narrative-korean">씬 1</div>
+        <h3>창작자의 손</h3>
+        <p>화가·피아니스트·작가의 손에서 창작물이 탄생하는 순간을 클로즈업으로 담는다.</p>
+      </div>
+      <div class="narrative-card reveal">
+        <div class="narrative-step">ACT 2 · 승 (承)</div>
+        <div class="narrative-korean">씬 2</div>
+        <h3>AI의 탄생</h3>
+        <p>수많은 창작물들이 파티클이 되어 중앙의 AI 아이콘으로 수렴하는 추상 시각화.</p>
+      </div>
+      <div class="narrative-card reveal">
+        <div class="narrative-step">ACT 3 · 전 (轉)</div>
+        <div class="narrative-korean">씬 3</div>
+        <h3>당신도 창작자</h3>
+        <p>AI 도구로 창작하는 실루엣 인물을 통해 시청자가 자신을 창작 주체로 인식하게 한다.</p>
+      </div>
+      <div class="narrative-card reveal">
+        <div class="narrative-step">ACT 4 · 결 (結)</div>
+        <div class="narrative-korean">씬 4 + 5</div>
+        <h3>출처 · 허락 · 존중</h3>
+        <p>3가지 행동 지침을 순차적으로 제시하고, 슬로건으로 여운 있게 마무리한다.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CHARACTERS -->
+<section id="characters">
+  <div class="reveal">
+    <div class="section-label">Characters</div>
+    <h2 class="section-title">등장인물 캐릭터 시트</h2>
+    <p class="section-desc">AI 이미지 생성 도구(Google Gemini)로 제작한 캐릭터 비주얼. 일관된 톤앤매너 유지를 위해 시그니처 컬러와 등장 씬을 명시했습니다.</p>
+  </div>
+  <div class="char-grid">
+    <div class="char-card reveal">
+      <img src="03_images/character_sheet_sangwoo_v2_fixed.png" alt="캐릭터 시트 — 상우 (Sangwoo)" loading="lazy" />
+    </div>
+    <div class="char-card reveal">
+      <img src="03_images/character_sheet_yujin_v2.png" alt="캐릭터 시트 — 유진 (Yujin)" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SCENES -->
+<div class="scenes-section" id="scenes">
+  <div class="scenes-inner">
+    <div class="reveal">
+      <div class="section-label">Storyboard</div>
+      <h2 class="section-title">씬별 스토리보드</h2>
+      <p class="section-desc">총 5개 씬, 40초 구성. Google Gemini → Runway Gen-3 → ElevenLabs → CapCut 파이프라인으로 제작됩니다.</p>
+    </div>
+
+    <!-- Timeline bar -->
+    <div class="timeline-bar reveal" style="margin-top:3rem;">
+      <div class="tl-seg" style="width:17.5%; background:rgba(212,140,0,0.7);" data-label="씬1 · 0~7초"></div>
+      <div class="tl-seg" style="width:25%; background:rgba(59,125,216,0.7);" data-label="씬2 · 7~17초"></div>
+      <div class="tl-seg" style="width:20%; background:rgba(100,200,120,0.7);" data-label="씬3 · 17~25초"></div>
+      <div class="tl-seg" style="width:25%; background:rgba(200,100,200,0.7);" data-label="씬4 · 25~35초"></div>
+      <div class="tl-seg" style="width:12.5%; background:rgba(212,140,0,0.9);" data-label="씬5 · 35~40초"></div>
+    </div>
+
+    <div class="scene-list" style="margin-top:5rem;">
+
+      <!-- 씬 1 -->
+      <div class="scene-item reveal">
+        <div class="scene-num">
+          <span class="n">01</span>
+          <span class="tag">7초</span>
+        </div>
+        <div class="scene-body">
+          <div class="scene-header">
+            <div class="scene-title">창작자의 손 / Creator's Hand</div>
+            <span class="scene-duration">0 – 7초</span>
+          </div>
+          <p class="scene-msg">사람의 손에서 창작물이 탄생한다는 사실을 시각적으로 각인. 화가·피아니스트·작가 3컷을 빠르게 이어붙임. (각 약 2초)</p>
+          <div class="scene-images">
+            <img src="03_images/네이토/1-1.png" alt="씬1-A 화가의 손" loading="lazy" />
+            <img src="03_images/네이토/1-2.png" alt="씬1-B 피아니스트의 손" loading="lazy" />
+          </div>
+          <div class="scene-tools">
+            <span class="tool-badge">Google Gemini</span>
+            <span class="tool-badge">Runway Gen-3</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 씬 2 -->
+      <div class="scene-item reveal">
+        <div class="scene-num">
+          <span class="n">02</span>
+          <span class="tag">10초</span>
+        </div>
+        <div class="scene-body">
+          <div class="scene-header">
+            <div class="scene-title">AI 학습 시각화 / AI Learning</div>
+            <span class="scene-duration">7 – 17초</span>
+          </div>
+          <p class="scene-msg">수많은 창작물이 AI를 학습시켰다는 사실을 추상적으로 시각화. 파티클이 중앙 AI 아이콘으로 수렴.</p>
+          <div class="scene-images">
+            <img src="03_images/네이토/2-1.png" alt="씬2-A AI 파티클" loading="lazy" />
+            <img src="03_images/네이토/2-2.png" alt="씬2-B AI 수렴" loading="lazy" />
+          </div>
+          <div class="scene-narration">
+            "이 모든 창작물이… AI를 만들었습니다."
+          </div>
+          <div class="scene-tools">
+            <span class="tool-badge">Google Gemini</span>
+            <span class="tool-badge">Runway Gen-3</span>
+            <span class="tool-badge">ElevenLabs</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 씬 3 -->
+      <div class="scene-item reveal">
+        <div class="scene-num">
+          <span class="n">03</span>
+          <span class="tag">8초</span>
+        </div>
+        <div class="scene-body">
+          <div class="scene-header">
+            <div class="scene-title">당신도 창작자 / You Are Creator</div>
+            <span class="scene-duration">17 – 25초</span>
+          </div>
+          <p class="scene-msg">AI 도구를 사용하는 사람도 창작 주체임을 인식. 따뜻한 자연광 실루엣으로 희망적 분위기 전환.</p>
+          <div class="scene-images">
+            <img src="03_images/네이토/3-1.png" alt="씬3-A 실루엣 창작자" loading="lazy" />
+            <img src="03_images/네이토/3-2.png" alt="씬3-B 화면 클로즈업" loading="lazy" />
+          </div>
+          <div class="scene-narration">
+            "이제, 당신도 창작자입니다."
+          </div>
+          <div class="scene-tools">
+            <span class="tool-badge">Google Gemini</span>
+            <span class="tool-badge">Runway Gen-3</span>
+            <span class="tool-badge">ElevenLabs</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 씬 4 -->
+      <div class="scene-item reveal">
+        <div class="scene-num">
+          <span class="n">04</span>
+          <span class="tag">10초</span>
+        </div>
+        <div class="scene-body">
+          <div class="scene-header">
+            <div class="scene-title">행동 지침 / Three Actions</div>
+            <span class="scene-duration">25 – 35초</span>
+          </div>
+          <p class="scene-msg">출처 표기·허락·존중, 3가지 구체적 행동을 텍스트 페이드인으로 순차 강조.</p>
+          <div class="scene-images">
+            <img src="03_images/네이토/4-1.png" alt="씬4-A 공존 일러스트" loading="lazy" />
+            <img src="03_images/네이토/4-2.png" alt="씬4-B 텍스트 강조" loading="lazy" />
+          </div>
+          <div class="scene-narration">
+            "출처를 밝히고, 허락을 구하고, 창작자를 존중합니다."
+          </div>
+          <div class="scene-tools">
+            <span class="tool-badge">Google Gemini</span>
+            <span class="tool-badge">Runway Gen-3</span>
+            <span class="tool-badge">ElevenLabs</span>
+            <span class="tool-badge">CapCut</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 씬 5 -->
+      <div class="scene-item reveal">
+        <div class="scene-num">
+          <span class="n">05</span>
+          <span class="tag">5초</span>
+        </div>
+        <div class="scene-body">
+          <div class="scene-header">
+            <div class="scene-title">엔딩 슬로건 카드 / Ending</div>
+            <span class="scene-duration">35 – 40초</span>
+          </div>
+          <p class="scene-msg">짙은 네이비 배경 위 타이포그래피 엔딩 카드. BGM 페이드아웃 + AI 워터마크 삽입.</p>
+          <div class="scene-images">
+            <img src="03_images/네이토/5-1.png" alt="씬5 엔딩 슬로건" loading="lazy" />
+          </div>
+          <div class="scene-narration">
+            "만들기 전에, 한 번 더."
+          </div>
+          <div class="scene-tools">
+            <span class="tool-badge">ElevenLabs</span>
+            <span class="tool-badge">CapCut</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SPECS -->
+<section id="specs">
+  <div class="reveal">
+    <div class="section-label">Video Specification</div>
+    <h2 class="section-title">영상 스펙</h2>
+  </div>
+  <div class="specs-grid">
+    <div class="spec-card reveal"><span class="label">총 길이</span><span class="value">40초</span></div>
+    <div class="spec-card reveal"><span class="label">해상도</span><span class="value">1920 × 1080</span></div>
+    <div class="spec-card reveal"><span class="label">화면 비율</span><span class="value">16:9</span></div>
+    <div class="spec-card reveal"><span class="label">프레임레이트</span><span class="value">24fps</span></div>
+    <div class="spec-card reveal"><span class="label">비디오 코덱</span><span class="value">H.264</span></div>
+    <div class="spec-card reveal"><span class="label">오디오 코덱</span><span class="value">AAC</span></div>
+    <div class="spec-card reveal"><span class="label">BGM</span><span class="value">공모전 공식 지정 음원</span></div>
+    <div class="spec-card reveal"><span class="label">AI 워터마크</span><span class="value">우측 하단 표기</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="reveal">
+    <div class="section-label">Production Pipeline</div>
+    <h2 class="section-title">사용 도구</h2>
+    <p class="section-desc">이미지 생성부터 최종 편집까지 4단계 AI 파이프라인.</p>
+  </div>
+  <table class="tools-table reveal">
+    <thead>
+      <tr>
+        <th>목적</th>
+        <th>주 도구</th>
+        <th>대안 도구</th>
+        <th>선택 이유</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>이미지 생성</td>
+        <td>Google Gemini</td>
+        <td>Ideogram, Canva AI</td>
+        <td>사실적·일러스트 스타일 모두 지원, 프롬프트 접근성 우수</td>
+      </tr>
+      <tr>
+        <td>영상 변환</td>
+        <td>Runway Gen-3</td>
+        <td>Pika</td>
+        <td>이미지 → 모션 변환 품질 우수, 씬별 세밀한 모션 제어 가능</td>
+      </tr>
+      <tr>
+        <td>음성 합성 (TTS)</td>
+        <td>ElevenLabs</td>
+        <td>CLOVA Voice</td>
+        <td>감성적이고 자연스러운 한국어 목소리 지원</td>
+      </tr>
+      <tr>
+        <td>BGM</td>
+        <td>공모전 공식 지정 음원</td>
+        <td>—</td>
+        <td>공모전 규정 필수</td>
+      </tr>
+      <tr>
+        <td>편집 통합</td>
+        <td>CapCut</td>
+        <td>DaVinci Resolve</td>
+        <td>텍스트 애니메이션·AI 워터마크 삽입·BGM 페이드아웃 편집</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- FOOTER -->
+<div class="divider"></div>
+<footer>
+  <div class="footer-slogan">만들기 전에, 한 번 더.</div>
+  <p class="footer-sub">AI로 만들 때도, 창작자를 먼저 생각합니다.</p>
+  <p class="footer-meta">K-AI 콘텐츠 공모전 2026 · Track A. 대학(원)/일반부 AI 영상(광고) · 2026-06-14</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
