@@ -1,0 +1,10 @@
+# Video files
+*.mp4
+*.avi
+*.mkv
+*.mov
+
+# Python virtual environment
+.venv/
+__pycache__/
+*.py[cod]
