@@ -13,8 +13,8 @@ MODEL      = "veo-2.0-generate-001"
 API_BASE   = f"https://{LOCATION}-aiplatform.googleapis.com"
 
 BASE_DIR = Path(__file__).parent.parent
-IMG_PATH = BASE_DIR / "03_images" / "v3" / "scene05_ending_card_v3.png"
-OUT_PATH = BASE_DIR / "02_sorce" / "scene05_ending_v3_motion.mp4"
+IMG_PATH = BASE_DIR / "02_text to img" / "v2(디벨롭)" / "scene05_ending_card_v3.png"
+OUT_PATH = BASE_DIR / "03_img to vid" / "v2(디벨롭)_씬별영상" / "scene05_ending_v3_motion.mp4"
 
 PROMPT = (
     "Cinematic fade-in typography animation. The deep navy black screen slowly brightens from complete black, "

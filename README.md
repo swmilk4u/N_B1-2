@@ -47,11 +47,11 @@ https://swmilk4u.github.io/N_B1-2/
 
 #### 👥 캐릭터 시트: 상우 (Sangwoo)
 * **시각 자료**:
-  <p align="center"><img src="03_images/character_sheets/character_sheet_sangwoo_v2_fixed.png" width="60%"></p>
+  <p align="center"><img src="02_text to img/character_sheets/character_sheet_sangwoo_v2_fixed.png" width="60%"></p>
 
 #### 👥 캐릭터 시트: 유진 (Yujin)
 * **시각 자료**:
-  <p align="center"><img src="03_images/character_sheets/character_sheet_yujin_v2.png" width="60%"></p>
+  <p align="center"><img src="02_text to img/character_sheets/character_sheet_yujin_v2.png" width="60%"></p>
 
 ---
 
@@ -68,7 +68,7 @@ https://swmilk4u.github.io/N_B1-2/
 * **스토리보드 시각 자료**:
   | 컷 A: 화가의 손 | 컷 B: 피아니스트의 손 | 컷 C: 작가의 손 |
   | :---: | :---: | :---: |
-  | ![scene01A_painter_v2](03_images/v2/scene01A_painter_v2.png) | ![scene01B_pianist_v2](03_images/v2/scene01B_pianist_v2.png) | ![scene01C_writer_v2](03_images/v2/scene01C_writer_v2.png) |
+  | ![scene01A_painter_v3_tight](02_text to img/v2(디벨롭)/scene01A_painter_v3_tight.png) | ![scene01B_pianist_v3](02_text to img/v2(디벨롭)/scene01B_pianist_v3.png) | ![scene01C_writer_v3](02_text to img/v2(디벨롭)/scene01C_writer_v3.png) |
 
 ---
 
@@ -81,7 +81,7 @@ https://swmilk4u.github.io/N_B1-2/
 * **모션 프롬프트 (Veo)**:
   `Thousands of tiny image and text particles swirl and stream inward, converging into the central glowing AI icon which pulses with light, smooth flowing motion.`
 * **스토리보드 시각 자료**:
-  <p align="center"><img src="03_images/v2/scene02_ai_learning_v2.png" width="60%"></p>
+  <p align="center"><img src="02_text to img/v2(디벨롭)/scene02_ai_learning_v3.png" width="60%"></p>
 
 ---
 
@@ -94,7 +94,7 @@ https://swmilk4u.github.io/N_B1-2/
 * **모션 프롬프트 (Veo)**:
   `The person slowly raises their head and looks at the glowing screen, warm sunlight gradually brightens, cinematic slow motion.`
 * **스토리보드 시각 자료**:
-  <p align="center"><img src="03_images/v2/scene03_creator_v2.png" width="60%"></p>
+  <p align="center"><img src="02_text to img/v2(디벨롭)/scene03_creator_v3.png" width="60%"></p>
 
 ---
 
@@ -107,7 +107,7 @@ https://swmilk4u.github.io/N_B1-2/
 * **모션 프롬프트 (Veo)**:
   `The two figures simultaneously turn toward each other and nod gently, subtle friendly animation, soft pastel glow between them.`
 * **스토리보드 시각 자료**:
-  <p align="center"><img src="03_images/v2/scene04_coexist_v2.png" width="60%"></p>
+  <p align="center"><img src="02_text to img/v2(디벨롭)/scene04_coexist_v3.png" width="60%"></p>
 
 ---
 

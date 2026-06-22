@@ -12,7 +12,7 @@ from pathlib import Path
 # 경로 정의
 # ─────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).parent.parent
-SOURCE_DIR = BASE_DIR / "02_sorce"
+SOURCE_DIR = BASE_DIR / "03_img to vid" / "v2(디벨롭)_씬별영상"
 AUDIO_DIR = BASE_DIR / "04_audio"
 OUTPUT_DIR = BASE_DIR / "05_PJ"
 OUTPUT_DIR.mkdir(exist_ok=True)
@@ -34,14 +34,14 @@ VIDEOS = [
 ]
 
 # 2. 이미지 및 오디오 리소스
-WATERMARK = SOURCE_DIR / "01 KT공모전 워터마크 및 지정음원" / "imgview.png"
-BGM = SOURCE_DIR / "01 KT공모전 워터마크 및 지정음원" / "숏폼영상_지정음원v1.mp3"
+WATERMARK = BASE_DIR / "04_audio" / "01 KT공모전 워터마크 및 지정음원" / "imgview.png"
+BGM = BASE_DIR / "04_audio" / "01 KT공모전 워터마크 및 지정음원" / "숏폼영상_지정음원v1.mp3"
 
 NARRATIONS = [
-    AUDIO_DIR / "scene02_narration.mp3",
-    AUDIO_DIR / "scene03_narration.mp3",
-    AUDIO_DIR / "scene04_narration.mp3",
-    AUDIO_DIR / "scene05_narration.mp3",
+    AUDIO_DIR / "02 내레이션 오디오" / "scene02_narration.mp3",
+    AUDIO_DIR / "02 내레이션 오디오" / "scene03_narration.mp3",
+    AUDIO_DIR / "02 내레이션 오디오" / "scene04_narration.mp3",
+    AUDIO_DIR / "02 내레이션 오디오" / "scene05_narration.mp3",
 ]
 
 def get_unique_output_path(base_path: Path) -> Path:

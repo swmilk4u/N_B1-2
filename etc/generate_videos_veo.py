@@ -22,8 +22,8 @@ MODEL      = "veo-2.0-generate-001"
 API_BASE   = f"https://{LOCATION}-aiplatform.googleapis.com"
 
 BASE_DIR   = Path(__file__).parent.parent
-IMG_DIR    = BASE_DIR / "03_images" / "v3"
-OUT_DIR    = BASE_DIR / "02_sorce"
+IMG_DIR    = BASE_DIR / "02_text to img" / "v2(디벨롭)"
+OUT_DIR    = BASE_DIR / "03_img to vid" / "v2(디벨롭)_씬별영상"
 OUT_DIR.mkdir(exist_ok=True)
 
 # ─────────────────────────────────────────────────────────
